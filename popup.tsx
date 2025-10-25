@@ -9,7 +9,7 @@ function IndexPopup() {
         padding: 16
       }}>
       <h2>
-        Hello
+        Hello World
       </h2>
       <input onChange={(e) => setData(e.target.value)} value={data} />
       <a href="https://docs.plasmo.com" target="_blank">
