@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "Whatifpro",
+  "description": "What-If grader on Canvas but advanced.",
+  "version": "0.0.1",
+  "author": "anahel-dmytro-mike",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "assets/icon.png",
+      "32": "assets/icon.png",
+      "48": "assets/icon.png",
+      "64": "assets/icon.png",
+      "128": "assets/icon.png"
+    }
+  },
+  "icons": {
+    "16": "assets/icon.png",
+    "32": "assets/icon.png",
+    "48": "assets/icon.png",
+    "64": "assets/icon.png",
+    "128": "assets/icon.png"
+  },
+  "permissions": [
+    "tabs",
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://*.instructure.com/*",
+    "https://*webcourses.ucf.edu/*"
+  ],
+  "background": {
+    "service_worker": "background.ts"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';"
+  },
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "https://*webcourses.ucf.edu/*"
+      ],
+      "resources": ["assets/*", "popup.html"]
+    }
+  ]
+}
