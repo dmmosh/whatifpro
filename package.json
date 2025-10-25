@@ -26,8 +26,10 @@
   "manifest": {
     "host_permissions": [
       "https://*/*"
-    ],
-    "permissions":[
+    ]
+  },
+  "plasmo": {
+    "permissions": [
       "tabs"
     ]
   }
