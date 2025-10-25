@@ -1,7 +1,8 @@
 import { UrlDisplay } from "UrlDisplay" // Note the import path
 
 
-export const Window: () => FC = () => {
+
+export function Window: () => FC = () => {
  return (<div
       style={{
         // This style creates a floating box on the page
