@@ -1,10 +1,14 @@
-import { UrlDisplay } from "UrlDisplay" // Note the import path
+import type { FC } from "react"
+import { UrlDisplay } from "./UrlDisplay"
 
+interface WindowProps {
+  url: string
+}
 
-export const Window: () => FC = () => {
- return (<div
+export const Window: FC<WindowProps> = ({ url }) => {
+  return (
+    <div
       style={{
-        // This style creates a floating box on the page
         position: "fixed",
         top: "20px",
         right: "20px",
@@ -14,7 +18,7 @@ export const Window: () => FC = () => {
         borderRadius: "8px",
         boxShadow: "0 4px 12px rgba(0,0,0,0.15)"
       }}>
-      {/* We can reuse your existing UrlDisplay component! */}
-      <UrlDisplay url={currentUrl} />
-</div> ) 
+      <UrlDisplay url={url} />
+    </div>
+  )
 }
