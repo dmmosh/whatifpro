@@ -1,35 +1,21 @@
 
-//import functionName from "./src/function.tsx"
 import { useState, useEffect } from "react"
-import type { JSX } from "react" // Import the JSX type for the return value
+import type { JSX } from "react"
+import { getCurrentTabUrl } from "./src/utils/chrome"
+import { UrlDisplay } from "./src/components/UrlDisplay"
 
-function IndexPopup(): JSX.Element { // Use JSX.Element as the return type, not Element
+function IndexPopup(): JSX.Element {
   const [currentUrl, setCurrentUrl] = useState<string>("")
 
-  const getCurrentUrl = async () => {
-    // 1. Corrected syntax: pass the object directly
-    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true })
-    
-    // 2. Corrected syntax: pass the value directly
-    if (tab && tab.url) {
-      setCurrentUrl(tab.url)
-    }
-  }
-
-  // 3. Corrected syntax for useEffect
   useEffect(() => {
-    getCurrentUrl()
-  }, []) // 4. Corrected dependency array (see explanation below)
+    const fetchUrl = async () => {
+      const url = await getCurrentTabUrl()
+      setCurrentUrl(url)
+    }
+    fetchUrl()
+  }, [])
 
-  return (
-    <div
-      style={{
-        padding: 16
-      }}>
-      <h1>You are currently at:</h1>
-      <p>{currentUrl}</p>
-    </div>
-  )
+  return <UrlDisplay url={currentUrl} />
 }
 
 export default IndexPopup
